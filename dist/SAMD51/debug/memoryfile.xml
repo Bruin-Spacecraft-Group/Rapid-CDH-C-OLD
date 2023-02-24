@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/SAMD51/debug/Rapid-CDH.debug.elf">
+    <memory name="program">
+      <units>bytes</units>
+      <length>524288</length>
+      <used>1300</used>
+      <free>522988</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>196608</length>
+      <used>125</used>
+      <free>196483</free>
+    </memory>
+  </executable>
+</project>
