@@ -6,6 +6,17 @@
 #define	HAL_H
 
 #include "xc.h"
+#define SAMD51 1
+#define SAMV71 2
+#ifdef __SAMD51J19A__
+    #define MCU SAMD51
+#elif __SAMV71Q21B__
+    #define MCU SAMV71
+#else
+    #error Unrecognized configuration, cannot create HAL
+#endif
+
+
 
 extern void* const PORT_A;
 extern void* const PORT_B;

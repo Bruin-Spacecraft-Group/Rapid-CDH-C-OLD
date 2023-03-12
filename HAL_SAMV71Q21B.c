@@ -1,6 +1,6 @@
 #include "HAL.h"
 
-#ifdef __SAMV71Q21B__
+#if MCU==SAMV71
 
 #include "samv71q21b.h"
 

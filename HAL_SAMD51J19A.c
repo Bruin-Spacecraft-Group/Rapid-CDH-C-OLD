@@ -1,6 +1,6 @@
 #include "HAL.h"
 
-#ifdef __SAMD51J19A__
+#if MCU==SAMD51
 
 #include "samd51j19a.h"
 
