@@ -50,7 +50,7 @@ void HAL_Sleep(uint32_t millis) {
     // sleeping, that's the whole idea of sleeping
     PM_REGS->PM_CTRLA = (PM_REGS->PM_CTRLA & ~PM_CTRLA_IORET_Msk) | PM_CTRLA_IORET(1);
     uint32_t saved_ports[PORT_GROUP_NUMBER][4 + sizeof(PORT_REGS->GROUP[0].PORT_PINCFG) + sizeof(PORT_REGS->GROUP[0].PORT_PMUX)];
-    for (unsigned i = _U_(0); i < PORT_GROUP_NUMBER; i++) {
+    for (unsigned i = 0U; i < PORT_GROUP_NUMBER; i++) {
         saved_ports[i][0] = PORT_REGS->GROUP[i].PORT_DIR;
         saved_ports[i][1] = PORT_REGS->GROUP[i].PORT_OUT;
         saved_ports[i][2] = PORT_REGS->GROUP[i].PORT_CTRL;
@@ -78,7 +78,7 @@ void HAL_Sleep(uint32_t millis) {
     PM_REGS->PM_INTENSET = 1 << 4;
     __WFI();
     // restore saved port configuration
-    for (unsigned i = _U_(0); i < PORT_GROUP_NUMBER; i++) {
+    for (unsigned i = 0U; i < PORT_GROUP_NUMBER; i++) {
         PORT_REGS->GROUP[i].PORT_DIR = saved_ports[i][0];
         PORT_REGS->GROUP[i].PORT_OUT = saved_ports[i][1];
         PORT_REGS->GROUP[i].PORT_CTRL = saved_ports[i][2];

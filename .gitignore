@@ -2,5 +2,6 @@
 build
 dist
 nbproject
+defmplabxtrace.*
 !nbproject/**.xml
 nbproject/private

@@ -38,12 +38,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
+        <pack name="SAMV71_DFP" vendor="Microchip" version="4.9.117"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
-        <pack name="SAMV71_DFP" vendor="Microchip" version="4.6.90"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1161,12 +1161,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
-        <pack name="SAMD51_DFP" vendor="Microchip" version="3.5.95"/>
+        <pack name="SAMD51_DFP" vendor="Microchip" version="3.6.120"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
