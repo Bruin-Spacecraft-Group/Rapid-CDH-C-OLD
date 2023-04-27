@@ -205,6 +205,7 @@ void runStateEvents() {
 }
 
 void reinitializeCDH() {
+    __enable_irq();
     switch (currentFlightState) {
         case LAUNCH_MODE:
             // no initialization to be re-completed, as this is the first mode for

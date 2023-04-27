@@ -21,7 +21,8 @@ void HAL_GPIO_TogglePin(void* port, uint32_t pins) {
 
 void TC0_Handler() {
     // turn off the sleep timer, since we're now awake
-    PM_REGS->PM_INTENCLR = 1 << 4;
+    NVIC_DisableIRQ(TC0_IRQn);
+    TC0_REGS->COUNT32.TC_INTENCLR = TC_INTENCLR_MC0_Msk;
 }
 
 void HAL_32kHz_Init() {
@@ -75,7 +76,8 @@ void HAL_Sleep(uint32_t millis) {
     PM_REGS->PM_SLEEPCFG = (PM_REGS->PM_SLEEPCFG & ~PM_SLEEPCFG_Msk) | PM_SLEEPCFG_SLEEPMODE(PM_SLEEPCFG_SLEEPMODE_HIBERNATE);
     while ((PM_REGS->PM_SLEEPCFG & PM_SLEEPCFG_Msk) != PM_SLEEPCFG_SLEEPMODE(PM_SLEEPCFG_SLEEPMODE_HIBERNATE));
     // wait for interrupt
-    PM_REGS->PM_INTENSET = 1 << 4;
+    NVIC_EnableIRQ(TC0_IRQn);
+    TC0_REGS->COUNT32.TC_INTENSET = TC_INTENSET_MC0_Msk;
     __WFI();
     // restore saved port configuration
     for (unsigned i = 0U; i < PORT_GROUP_NUMBER; i++) {
