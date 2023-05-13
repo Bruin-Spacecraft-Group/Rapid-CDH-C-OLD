@@ -9,7 +9,6 @@
 #define	ADCS_H
 
 #include "stdint.h"
-#include "FlightStateMachine.h"
 
 // incomplete struct of data that would be sent to comms subsystem
 typedef struct {
@@ -19,37 +18,37 @@ typedef struct {
     uint8_t attitude_z;
 } AdcsData;
 
-typedef enum { //not sure if we need this
-    0x00,
-    0x01,
-    0x02,
-    0x03,
-    0x04,
-    0x05,
-    0x06,
-    0x07,
-    0x08,
-    0x09,
-    0x0A
+typedef enum { 
+   PING = 0x00,
+   GET_DATA_REGULAR = 0x01,
+   GET_DATA_DETAILED = 0x02,
+   CHARGE_MODE = 0x03,
+   DOWNLINK_MODE = 0x04,
+   RADIATION_SAFE_MODE = 0x05,
+   POWER_SAFE_MODE = 0x06,
+   END_OF_LIFE_MODE = 0x07,
+   STARTUP_MODE = 0x08,
+   DETUMBLE_MODE = 0x09,
+   SET_ATTITUDE = 0x0A
 } COMMAND_CODE;
 
 /**
  * Sends a message to ADCS.
     * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ping();
+uint32_t ADCS_ping();
 
 /**
  * Asks ADCS to send data.
     * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t get_data_regular();
+uint32_t ADCS_getDataDegular();
 
 /**
  * Asks ADCS to send more detailed data.
     * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t get_data_detailed();
+uint32_t ADCS_getDataDetailed();
 
 /**
  * Tells ADCS to set the mode.
@@ -62,10 +61,18 @@ uint32_t get_data_detailed();
     *Startup mode (0x08)
     *Detumble mode (0x09)
  */
-uint32_t set_mode(FLIGHT_STATE mode);
+uint32_t ADCS_setMode(COMMAND_CODE mode);
 
-uint32_t set_attitude(uint32_t x, uint32_t y, uint32_t z);
+/**
+ * Tells ADCS to set the attitude according to the coordinates passed in. Also sets the mode to ATTITUDE_HOLD mode.
+    * @return 0 if unsuccessful, 1 if successful
+ */
+uint32_t ADCS_setAttitude(uint32_t x, uint32_t y, uint32_t z);
 
-AdcsData* data_for_comms();
+/**
+ * Puts the data from ADCS into an AdcsData struct.
+    * @return 0 if unsuccessful, 1 if successful
+ */
+uint32_t ADCS_getData(AdcsData* data);
 
 #endif	/* ADCS_H */
