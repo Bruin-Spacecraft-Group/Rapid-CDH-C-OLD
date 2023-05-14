@@ -51,8 +51,8 @@ void HAL_I2C_sendData(
 );
 
 void HAL_I2C_registerDataRecievedCallback(
-    HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data recieved callback
+    enum HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data received callback
 );
 
 #endif	/* HAL_H */
