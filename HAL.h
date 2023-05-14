@@ -17,15 +17,16 @@
 extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 #endif
 
-#include "xc.h"
+//#include "xc.h"
+#include <stdint.h> // for uint32_t
 
 extern void* const PORT_A;
 extern void* const PORT_B;
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs
-void HAL_GPIO_Init(void* port, uint32_t pins);
+//void HAL_GPIO_Init(void* port, uint32_t pins);
 // toggles any output pins chosen by the bit mask from the selected port
-void HAL_GPIO_TogglePin(void* port, uint32_t pins);
+//void HAL_GPIO_TogglePin(void* port, uint32_t pins);
 
 // sets up GCLK2 and TC0 to run at 32kHz
 void HAL_32kHz_Init();
@@ -36,5 +37,23 @@ void HAL_Sleep(uint32_t millis);
 // overflows each 1.5 days: this function is appropriate only for measuring small
 // elapsed durations and requires 32kHz to be initialized
 uint32_t HAL_getTime();
+
+enum HAL_Device {
+    adcs = 0x01,
+    prop = 0x02,
+    eps = 0x0b // as specified in EPS ICD
+};
+
+void HAL_I2C_sendData(
+    enum HAL_Device device,  // device number
+    char data[],        // array of data to be sent
+    int dataSize        // the size of data[]
+);
+
+void HAL_I2C_registerDataRecievedCallback(
+    HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data recieved callback
+);
+
 #endif	/* HAL_H */
 
