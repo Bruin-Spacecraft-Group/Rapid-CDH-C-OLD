@@ -1,4 +1,7 @@
 #include "HAL.h"
+
+#ifdef __SIMULATION__
+
 #include <stdio.h>
 
 // for sleep function
@@ -54,7 +57,7 @@ void HAL_I2C_sendData(
     int dataSize        // the size of data[]
 ) {
     printf("sent i2c data (%d bytes)\n", dataSize);
-    printf("\taddr:\t\t0x%x\n", device);
+    printf("\taddr:\t0x%x\n", device);
     for (int i = 0; i < dataSize; i++)
         printf("\t%x:\t0x%x\n",i,data[i]);
 }
@@ -65,3 +68,5 @@ void HAL_I2C_registerDataRecievedCallback(
 ) {
     dataRecievedCallbacks[callbacksN++] = dataRecieved;
 }
+
+#endif
