@@ -219,6 +219,7 @@ void performI2cDemo() {
 
 void reinitializeCDH() {
     performI2cDemo();   // NOTE: this is for demonstration for the i2c
+    __enable_irq();
     switch (currentFlightState) {
         case LAUNCH_MODE:
             // no initialization to be re-completed, as this is the first mode for
