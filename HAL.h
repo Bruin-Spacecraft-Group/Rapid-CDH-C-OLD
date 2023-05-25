@@ -47,7 +47,7 @@ enum HAL_Device {
 // CDH -> external device
 void HAL_I2C_sendData(
     enum HAL_Device device,  // device number
-    char data[],        // array of data to be sent
+    uint8_t data[],        // array of data to be sent
     int dataSize        // the size of data[]
 );
 
