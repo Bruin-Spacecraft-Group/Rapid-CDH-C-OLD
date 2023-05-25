@@ -109,4 +109,16 @@ uint32_t HAL_getTime() {
     return TC0_REGS->COUNT32.TC_COUNT;
 }
 
+void HAL_I2C_sendData(
+    enum HAL_Device device,  // device number
+    char data[],        // array of data to be sent
+    int dataSize        // the size of data[]
+) {}
+
+void HAL_I2C_registerDataRecievedCallback(
+    enum HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data received callback
+) {}
+
+
 #endif
