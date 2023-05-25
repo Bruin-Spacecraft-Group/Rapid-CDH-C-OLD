@@ -17,8 +17,10 @@
 extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 #endif
 
-//#include "xc.h"
-#include <stdint.h> // for uint32_t
+#ifdef __XC32
+    #include "xc.h"
+#endif
+#include <stdint.h>
 
 extern void* const PORT_A;
 extern void* const PORT_B;
@@ -44,18 +46,8 @@ enum HAL_Device {
     eps = 0x0b // as specified in EPS ICD
 };
 
-// CDH -> external device
-void HAL_I2C_sendData(
-    enum HAL_Device device,  // device number
-    uint8_t data[],        // array of data to be sent
-    int dataSize        // the size of data[]
-);
-
-// external device -> CDH
-void HAL_I2C_registerDataRecievedCallback(
-    enum HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data received callback
-);
+void HAL_I2C_beginTransmission(uint8_t addr);
+void HAL_I2C_signalTimeout();
 
 #endif	/* HAL_H */
 

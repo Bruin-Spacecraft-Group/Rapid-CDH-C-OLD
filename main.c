@@ -2,8 +2,7 @@
 #include "FlightStateMachine.h"
 
 int main(void) {
-    reinitializeCDH();
     while (1) {
-        runStateEvents();
+        // TODO: make this send an I2C ping to ADCS
     }
 }

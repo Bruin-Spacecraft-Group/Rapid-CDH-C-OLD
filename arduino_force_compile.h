@@ -6,7 +6,8 @@
 // shut up
 // i said shut up
 
-#include "util.h"
+#include "util.c"
 #include "HAL_ATMEGA2560.c"
 #include "checksum.c"
 #include "FlightStateMachine.c"
+#include "main.c"

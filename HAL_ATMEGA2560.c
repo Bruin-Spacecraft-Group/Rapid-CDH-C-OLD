@@ -2,16 +2,24 @@
 
 #ifdef __ARDUINO_MEGA_2560__
 
-void HAL_I2C_sendData(
-    enum HAL_Device device,  // device number
-    uint8_t data[],        // array of data to be sent
-    int dataSize        // the size of data[]
-) 
-{
-    //TODO
-    //actual i2c things
-    //implement isr (the callback) as tail call to isr
-    //i2c shenanigans
+void HAL_32kHz_Init() {
+    // do nothing because arduino libs already provide millis() and delay()
+}
+
+void HAL_Sleep(uint32_t millis) {
+    delay(millis);
+}
+
+uint32_t HAL_getTime() {
+    return millis() >> 32;
+}
+
+void HAL_I2C_beginTransmission(uint8_t addr) {
+    // TODO: this is half-hearted, implement it using Wire library and I2C_handler functions
+}
+
+void HAL_I2C_signalTimeout() {
+    // ignore errors for flatsat
 }
 
 #endif
