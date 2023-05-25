@@ -34,25 +34,21 @@ typedef enum {
 
 /**
  * Sends a message to ADCS.
-    * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ADCS_ping();
+void ADCS_ping();
 
 /**
  * Asks ADCS to send data.
-    * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ADCS_getDataDegular();
+void ADCS_getDataDegular();
 
 /**
  * Asks ADCS to send more detailed data.
-    * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ADCS_getDataDetailed();
+void ADCS_getDataDetailed();
 
 /**
  * Tells ADCS to set the mode.
-    * @return 0 if unsuccessful, 1 if successful
     *Charge mode (0x03)
     *Downlink mode (0x04)
     *Radiation safe mode (0x05)
@@ -61,18 +57,16 @@ uint32_t ADCS_getDataDetailed();
     *Startup mode (0x08)
     *Detumble mode (0x09)
  */
-uint32_t ADCS_setMode(COMMAND_CODE mode);
+void ADCS_setMode(COMMAND_CODE mode);
 
 /**
  * Tells ADCS to set the attitude according to the coordinates passed in. Also sets the mode to ATTITUDE_HOLD mode.
-    * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ADCS_setAttitude(uint32_t x, uint32_t y, uint32_t z);
+void ADCS_setAttitude(uint16_t w, uint16_t x, uint16_t y, uint16_t z);
 
 /**
  * Puts the data from ADCS into an AdcsData struct.
-    * @return 0 if unsuccessful, 1 if successful
  */
-uint32_t ADCS_getData(AdcsData* data);
+void ADCS_getData(AdcsData* data);
 
 #endif	/* ADCS_H */

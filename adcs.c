@@ -3,55 +3,74 @@
 #include "HAL.h"
 #include "util.h"
 
-uint32_t ADCS_ping(){
+void ADCS_ping(){
     // send code 0x00
-    return 0;
+    uint8_t data[1] = {0};
+    HAL_I2C_sendData(adcs, data, 1);
 }
 
-uint32_t ADCS_getDataRegular(){
+void ADCS_getDataRegular(){
     // send code 0x01
-    return 0;
+    uint8_t data[1] = {1};
+    HAL_I2C_sendData(adcs, data, 1);
 }
 
-uint32_t ADCS_getDataDetailed(){
+void ADCS_getDataDetailed(){
     // send code 0x02
-    return 0;
+    uint8_t data[1] = {2};
+    HAL_I2C_sendData(adcs, data, 1);
 }
 
-uint32_t ADCS_setMode(COMMAND_CODE mode){
+void ADCS_setMode(COMMAND_CODE mode){
 
     switch(mode){
         case CHARGE_MODE:
             // send code 0x03
+            uint8_t data[1] = {3};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case DOWNLINK_MODE:
             // send code 0x04
+            uint8_t data[1] = {4};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case RADIATION_SAFE_MODE:
             // send code 0x05
+            uint8_t data[1] = {5};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case POWER_SAFE_MODE:
             // send code 0x06
+            uint8_t data[1] = {6};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case END_OF_LIFE_MODE:
             // send code 0x07
+            uint8_t data[1] = {7};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case STARTUP_MODE:
             // send code 0x08
+            uint8_t data[1] = {8};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
         case DETUMBLE_MODE:
             // send code 0x09
+            uint8_t data[1] = {9};
+            HAL_I2C_sendData(adcs, data, 1);
             break;
     }
 
 }
 
-uint32_t ADCS_setAttitude(uint32_t x, uint32_t y, uint32_t z){
+void ADCS_setAttitude(uint16_t w, uint16_t x, uint16_t y, uint16_t z){
     // send code 0x0A
+    uint8_t data[9] = {0x0A, (uint8_t) (w>>8), (uint8_t) w, (uint8_t) (x>>8), (uint8_t) x, (uint8_t) (y>>8), (uint8_t) y, (uint8_t) (z>>8), (uint8_t) z};
+    HAL_I2C_sendData(adcs, data, 9);
     // also sets to ATTITUDE_HOLD mode
-    return 0;
 }
 
-uint32_t ADCS_getData(AdcsData* data){
+void ADCS_getData(AdcsData* data){
     // writes the data into data and returns status code
+    // TODO: format
 }
