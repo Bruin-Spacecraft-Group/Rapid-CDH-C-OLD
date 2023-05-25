@@ -5,19 +5,19 @@
 
 void ADCS_ping(){
     // send code 0x00
-    uint8_t data[1] = {0};
+    uint8_t data[1] = {0x00};
     HAL_I2C_sendData(adcs, data, 1);
 }
 
 void ADCS_getDataRegular(){
     // send code 0x01
-    uint8_t data[1] = {1};
+    uint8_t data[1] = {0x01};
     HAL_I2C_sendData(adcs, data, 1);
 }
 
 void ADCS_getDataDetailed(){
     // send code 0x02
-    uint8_t data[1] = {2};
+    uint8_t data[1] = {0x02};
     HAL_I2C_sendData(adcs, data, 1);
 }
 
@@ -26,37 +26,37 @@ void ADCS_setMode(COMMAND_CODE mode){
     switch(mode){
         case CHARGE_MODE:
             // send code 0x03
-            uint8_t data[1] = {3};
+            uint8_t data[1] = {0x03};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case DOWNLINK_MODE:
             // send code 0x04
-            uint8_t data[1] = {4};
+            uint8_t data[1] = {0x04};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case RADIATION_SAFE_MODE:
             // send code 0x05
-            uint8_t data[1] = {5};
+            uint8_t data[1] = {0x05};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case POWER_SAFE_MODE:
             // send code 0x06
-            uint8_t data[1] = {6};
+            uint8_t data[1] = {0x06};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case END_OF_LIFE_MODE:
             // send code 0x07
-            uint8_t data[1] = {7};
+            uint8_t data[1] = {0x07};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case STARTUP_MODE:
             // send code 0x08
-            uint8_t data[1] = {8};
+            uint8_t data[1] = {0x08};
             HAL_I2C_sendData(adcs, data, 1);
             break;
         case DETUMBLE_MODE:
             // send code 0x09
-            uint8_t data[1] = {9};
+            uint8_t data[1] = {0x09};
             HAL_I2C_sendData(adcs, data, 1);
             break;
     }
