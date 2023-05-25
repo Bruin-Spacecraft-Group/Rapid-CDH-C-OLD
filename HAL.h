@@ -39,8 +39,8 @@ void HAL_Sleep(uint32_t millis);
 uint32_t HAL_getTime();
 
 enum HAL_Device {
-    adcs = 0x01,
-    prop = 0x02,
+    adcs = 0x0c,
+    prop = 0x0d,
     eps = 0x0b // as specified in EPS ICD
 };
 
