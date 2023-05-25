@@ -11,6 +11,7 @@ void HAL_I2C_sendData(
     //TODO
     //actual i2c things
     //implement isr (the callback) as tail call to isr
+    //i2c shenanigans
 }
 
 #endif
