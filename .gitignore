@@ -1,5 +1,6 @@
 .generated_files
 build
+bin
 dist
 nbproject
 defmplabxtrace.*
