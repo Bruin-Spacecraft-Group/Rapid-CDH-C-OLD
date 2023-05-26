@@ -13,6 +13,7 @@ int transmitting_handler(uint8_t& next_byte);
 /// 0 indicates to ACK and continue receiving
 /// 1 indicates to NACK and close the connection
 /// 2 indicates to NACK, close the connection, and record that an error occurred
+/// 3 indicates to ACK, close the connection, and record that an error occurred
 // last_byte will be the most recent data byte received
 int receiving_handler(uint8_t last_byte);
 
