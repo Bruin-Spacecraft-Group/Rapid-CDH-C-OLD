@@ -3,11 +3,16 @@
 
 #include "HAL.h"
 #include "util.h"
+#include "plib_sercom0_i2c_master.h"
 
 /* PERSISTENT */ FLIGHT_STATE currentFlightState = LAUNCH_MODE;
 /* PERSISTENT */ uint32_t deploymentTime;
 uint8_t commsBuffer[COMMS_BLOCK_SIZE];
 Command* nextAction = NULL;
+
+void setupI2C() {
+    SERCOM0_I2C_Initialize();
+}
 
 void doPeriodicOps() {
     static uint32_t epsCheckTime = 1 << 31;

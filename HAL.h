@@ -19,6 +19,7 @@ extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 
 //#include "xc.h"
 #include <stdint.h> // for uint32_t
+#include <asf.h>
 
 extern void* const PORT_A;
 extern void* const PORT_B;

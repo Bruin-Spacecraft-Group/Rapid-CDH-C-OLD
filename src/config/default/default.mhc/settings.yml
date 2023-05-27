@@ -1,0 +1,14 @@
+format_version: v1.0
+configName: default
+folderName: Rapid-CDH-I2C
+frameworkPath: /Users/emmettcocke/bruinspace/harmony
+processor: ATSAMD51N19A
+projectName: Rapid-CDH-I2C
+settings:
+  PackageFilter: ''
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: dev_packs/arm/CMSIS/5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: dev_packs/Microchip/SAMD51_DFP/3.6.120/samd51a/atdf/ATSAMD51N19A.atdf

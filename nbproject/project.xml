@@ -3,23 +3,15 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Rapid-CDH-Firmware</name>
-            <creation-uuid>07c583c7-e420-417c-a3e1-a2d49f79c7b6</creation-uuid>
+            <name>Rapid-CDH-I2C</name>
+            <creation-uuid>63239ca0-aa6c-4033-b0e3-87f68f356ee1</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions>c</c-extensions>
-            <cpp-extensions/>
-            <header-extensions>h</header-extensions>
-            <asminc-extensions/>
-            <sourceEncoding>UTF-8</sourceEncoding>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList/>
             <confList>
                 <confElem>
-                    <name>SAMV71</name>
-                    <type>2</type>
-                </confElem>
-                <confElem>
-                    <name>SAMD51</name>
+                    <name>default</name>
                     <type>2</type>
                 </confElem>
             </confList>
