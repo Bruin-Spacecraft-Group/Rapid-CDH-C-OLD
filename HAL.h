@@ -26,9 +26,9 @@ extern void* const PORT_A;
 extern void* const PORT_B;
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs
-//void HAL_GPIO_Init(void* port, uint32_t pins);
+void HAL_GPIO_Init(void* port, uint32_t pins);
 // toggles any output pins chosen by the bit mask from the selected port
-//void HAL_GPIO_TogglePin(void* port, uint32_t pins);
+void HAL_GPIO_TogglePin(void* port, uint32_t pins);
 
 // sets up GCLK2 and TC0 to run at 32kHz
 void HAL_32kHz_Init();
