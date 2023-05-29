@@ -26,9 +26,9 @@ extern void* const PORT_A;
 extern void* const PORT_B;
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs
-//void HAL_GPIO_Init(void* port, uint32_t pins);
+void HAL_GPIO_Init(void* port, uint32_t pins);
 // toggles any output pins chosen by the bit mask from the selected port
-//void HAL_GPIO_TogglePin(void* port, uint32_t pins);
+void HAL_GPIO_TogglePin(void* port, uint32_t pins);
 
 // sets up GCLK2 and TC0 to run at 32kHz
 void HAL_32kHz_Init();
@@ -45,6 +45,19 @@ enum HAL_Device {
     prop = 0x0d,
     eps = 0x0b // as specified in EPS ICD
 };
+
+// CDH -> external device
+void HAL_I2C_sendData( //should be moved to I2C_handler
+    enum HAL_Device device,  // device number
+    uint8_t data[],        // array of data to be sent
+    int dataSize        // the size of data[]
+);
+
+// external device -> CDH
+void HAL_I2C_registerDataRecievedCallback( //should be moved to I2C_handler
+    enum HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data received callback
+);
 
 void HAL_I2C_beginTransmission(uint8_t addr);
 void HAL_I2C_signalTimeout();
