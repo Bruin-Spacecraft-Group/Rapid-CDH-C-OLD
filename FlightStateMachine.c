@@ -208,17 +208,8 @@ void dataRecieved(char data[], int dataSize) {
     // do stuff with the data
 }
 
-void performI2cDemo() {
-    // send data via I2C
-    char data[] = {1, 2};
-    HAL_I2C_sendData(eps, data, 2);
-
-    // recieve data via I2C
-    HAL_I2C_registerDataRecievedCallback(eps, dataRecieved);
-}
-
 void reinitializeCDH() {
-    performI2cDemo();   // NOTE: this is for demonstration for the i2c
+    __enable_irq();
     switch (currentFlightState) {
         case LAUNCH_MODE:
             // no initialization to be re-completed, as this is the first mode for

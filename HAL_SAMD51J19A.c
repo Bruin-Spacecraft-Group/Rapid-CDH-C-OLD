@@ -21,7 +21,8 @@ void HAL_GPIO_TogglePin(void* port, uint32_t pins) {
 
 void TC0_Handler() {
     // turn off the sleep timer, since we're now awake
-    PM_REGS->PM_INTENCLR = 1 << 4;
+    NVIC_DisableIRQ(TC0_IRQn);
+    TC0_REGS->COUNT32.TC_INTENCLR = TC_INTENCLR_MC0_Msk;
 }
 
 void HAL_32kHz_Init() {
@@ -38,6 +39,8 @@ void HAL_32kHz_Init() {
     GCLK_REGS->GCLK_PCHCTRL[9] = (GCLK_REGS->GCLK_PCHCTRL[9] & ~GCLK_PCHCTRL_CHEN_Msk) | GCLK_PCHCTRL_CHEN(1);
     while (GCLK_REGS->GCLK_SYNCBUSY);
     while ((GCLK_REGS->GCLK_PCHCTRL[9] & GCLK_PCHCTRL_CHEN_Msk) != GCLK_PCHCTRL_CHEN(1));
+    MCLK_REGS->MCLK_APBAMASK = (MCLK_APBAMASK_TC0(1) & ~MCLK_APBAMASK_TC0_Msk) | MCLK_REGS->MCLK_APBAMASK;
+    TC0_REGS->COUNT32.TC_CTRLA = 0b01001010;
 }
 
 void HAL_Sleep(uint32_t millis) {
@@ -75,7 +78,8 @@ void HAL_Sleep(uint32_t millis) {
     PM_REGS->PM_SLEEPCFG = (PM_REGS->PM_SLEEPCFG & ~PM_SLEEPCFG_Msk) | PM_SLEEPCFG_SLEEPMODE(PM_SLEEPCFG_SLEEPMODE_HIBERNATE);
     while ((PM_REGS->PM_SLEEPCFG & PM_SLEEPCFG_Msk) != PM_SLEEPCFG_SLEEPMODE(PM_SLEEPCFG_SLEEPMODE_HIBERNATE));
     // wait for interrupt
-    PM_REGS->PM_INTENSET = 1 << 4;
+    NVIC_EnableIRQ(TC0_IRQn);
+    TC0_REGS->COUNT32.TC_INTENSET = TC_INTENSET_MC0_Msk;
     __WFI();
     // restore saved port configuration
     for (unsigned i = 0U; i < PORT_GROUP_NUMBER; i++) {
@@ -107,16 +111,15 @@ uint32_t HAL_getTime() {
     return TC0_REGS->COUNT32.TC_COUNT;
 }
 
-void HAL_I2C_sendData(
-    enum HAL_Device device,  // device number
-    char data[],        // array of data to be sent
-    int dataSize        // the size of data[]
-) {}
+void HAL_I2C_beginTransmission(uint8_t addr) {
+    // TODO: implement magic
+}
 
-void HAL_I2C_registerDataRecievedCallback(
-    enum HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data received callback
-) {}
+void HAL_I2C_signalTimeout() {
+    // TODO: implement more magic
+}
 
+// TODO: implement magical stuff that handles xcvr state (rx or tx)
+// TODO: implement magical ISR stuff to call I2C_Handler functions
 
 #endif
