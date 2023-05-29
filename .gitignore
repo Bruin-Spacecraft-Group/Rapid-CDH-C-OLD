@@ -2,7 +2,9 @@
 build
 bin
 dist
-nbproject
+nbproject/**.mk
+nbproject/**.properties
 defmplabxtrace.*
-!nbproject/**.xml
 nbproject/private
+**.DS_Store
+

@@ -51,22 +51,4 @@ uint32_t HAL_getTime() {
     time_millis += 2; // add some random value for noise
 }
 
-void HAL_I2C_sendData(
-    enum HAL_Device device,  // device number
-    char data[],        // array of data to be sent
-    int dataSize        // the size of data[]
-) {
-    printf("sent i2c data (%d bytes)\n", dataSize);
-    printf("\taddr:\t0x%x\n", device);
-    for (int i = 0; i < dataSize; i++)
-        printf("\t%x:\t0x%x\n",i,data[i]);
-}
-
-void HAL_I2C_registerDataRecievedCallback(
-    HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data recieved callback
-) {
-    dataRecievedCallbacks[callbacksN++] = dataRecieved;
-}
-
 #endif

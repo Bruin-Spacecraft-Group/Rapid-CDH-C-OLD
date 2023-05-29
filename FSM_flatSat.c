@@ -13,7 +13,7 @@ void runStateEvents() {
 
     // Confirm received message from ADCS (make ADCS send exactly 0x000026 back [includes checksum])
     AdcsData adcs_data;
-    ADCS_getData(adcs_data);
+    ADCS_getData(&adcs_data);
     
     // Display the least significant byte of the checksum (aka last transmitted byte) using 8 LEDs
     // TODO: LEDS

@@ -9,6 +9,8 @@
       <itemPath>state_machine_required_functions.h</itemPath>
       <itemPath>util.h</itemPath>
       <itemPath>I2C_handler.h</itemPath>
+      <itemPath>adcs.h</itemPath>
+      <itemPath>config.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -24,6 +26,9 @@
       <itemPath>util.c</itemPath>
       <itemPath>HAL_ATMEGA2560.c</itemPath>
       <itemPath>HAL_simulation.c</itemPath>
+      <itemPath>adcs.c</itemPath>
+      <itemPath>FSM_flatSat.c</itemPath>
+      <itemPath>I2C_handler.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1168,7 +1173,7 @@
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.21</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>4</platform>
       </toolsSet>
       <packs>
         <pack name="SAMD51_DFP" vendor="Microchip" version="3.6.120"/>

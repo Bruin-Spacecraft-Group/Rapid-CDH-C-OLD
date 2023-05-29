@@ -2,12 +2,24 @@
 #define I2C_HANDLER_H
 
 #include <stdint.h>
+#include "HAL.h"
+
+void HAL_I2C_sendData(
+    enum HAL_Device device,  // device number
+    uint8_t data[],        // array of data to be sent
+    int dataSize        // the size of data[]
+);
+
+void HAL_I2C_registerDataRecievedCallback(
+    enum HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data recieved callback
+);
 
 // return status code:
 /// 0 indicates to continue transmitting
 /// 1 indicates to send Sr and become a receiver
 // if status code is 0, next_byte must be set properly
-int transmitting_handler(uint8_t& next_byte);
+int transmitting_handler(uint8_t* next_byte);
 
 // return status code:
 /// 0 indicates to ACK and continue receiving
