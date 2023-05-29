@@ -11,11 +11,15 @@
 #include "stdint.h"
 
 // incomplete struct of data that would be sent to comms subsystem
+// typedef struct {
+//     uint8_t mode;
+//     uint8_t attitude_x;
+//     uint8_t attitude_y;
+//     uint8_t attitude_z;
+// } AdcsData;
+
 typedef struct {
-    uint8_t mode;
-    uint8_t attitude_x;
-    uint8_t attitude_y;
-    uint8_t attitude_z;
+   uint8_t flatsat_data;
 } AdcsData;
 
 typedef enum { 

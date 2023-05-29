@@ -8,6 +8,12 @@
 
 #include "util.c"
 #include "HAL_ATMEGA2560.c"
+#include "HAL_SAMD51J19A.c"
+#include "HAL_SAMV71Q21B.c"
+#include "HAL_simulation.c"
 #include "checksum.c"
+//#include "I2C_handle.c"
+#include "ADCS.c"
 #include "FlightStateMachine.c"
+#include "FSM_flatSat.c"
 #include "main.c"

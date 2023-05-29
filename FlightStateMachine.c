@@ -3,7 +3,9 @@
 
 #include "HAL.h"
 #include "util.h"
+#include "config.h"
 
+#if FSM_CHOICE == FSM_PRODUCTION
 /* PERSISTENT */ FLIGHT_STATE currentFlightState = LAUNCH_MODE;
 /* PERSISTENT */ uint32_t deploymentTime;
 uint8_t commsBuffer[COMMS_BLOCK_SIZE];
@@ -282,3 +284,5 @@ void reinitializeCDH() {
             break;
     }
 }
+
+#endif

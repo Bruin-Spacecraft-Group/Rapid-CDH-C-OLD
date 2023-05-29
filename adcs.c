@@ -71,6 +71,7 @@ void ADCS_setAttitude(uint16_t w, uint16_t x, uint16_t y, uint16_t z){
 }
 
 void ADCS_getData(AdcsData* data){
-    // writes the data into data and returns status code
+    // refer to a cache of the more recent ADCS data
+    // for flatsat, just most recent transmitted byte
     // TODO: format
 }

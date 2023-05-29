@@ -1,0 +1,3 @@
+#define FSM_PRODUCTION 3
+#define FSM_FLATSAT 1
+#define FSM_CHOICE FSM_FLATSAT

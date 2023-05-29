@@ -20,6 +20,7 @@ extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 #ifdef __XC32
     #include "xc.h"
 #endif
+
 #include <stdint.h>
 
 extern void* const PORT_A;
