@@ -46,6 +46,19 @@ enum HAL_Device {
     eps = 0x0b // as specified in EPS ICD
 };
 
+// CDH -> external device
+void HAL_I2C_sendData( //should be moved to I2C_handler
+    enum HAL_Device device,  // device number
+    uint8_t data[],        // array of data to be sent
+    int dataSize        // the size of data[]
+);
+
+// external device -> CDH
+void HAL_I2C_registerDataRecievedCallback( //should be moved to I2C_handler
+    enum HAL_Device device,  // device must send its address in I2C transmission
+    void (*dataRecieved)(char data[], int dataSize) // data received callback
+);
+
 void HAL_I2C_beginTransmission(uint8_t addr);
 void HAL_I2C_signalTimeout();
 
