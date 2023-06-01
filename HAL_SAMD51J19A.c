@@ -18,6 +18,15 @@ void HAL_GPIO_Init(void* port, uint32_t pins) {
 void HAL_GPIO_TogglePin(void* port, uint32_t pins) {
     ((port_group_registers_t*) port)->PORT_OUTTGL = pins;
 }
+void HAL_GPIO_AssignPins(void* port, uint32_t pins) {
+    ((port_group_registers_t*) port)->PORT_OUT = pins;
+}
+void HAL_GPIO_SetPins(void* port, uint32_t pins) {
+    ((port_group_registers_t*) port)->PORT_OUTSET = pins;
+}
+void HAL_GPIO_ClearPins(void* port, uint32_t pins) {
+    ((port_group_registers_t*) port)->PORT_OUTCLR = pins;
+}
 
 void TC0_Handler() {
     // turn off the sleep timer, since we're now awake
