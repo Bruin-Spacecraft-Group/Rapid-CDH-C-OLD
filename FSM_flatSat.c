@@ -14,7 +14,7 @@ void runStateEvents() {
     // Confirm received message from ADCS (make ADCS send exactly 0x000026 back [includes checksum])
     AdcsData adcs_data;
     ADCS_getData(&adcs_data);
-    HAL_GPIO_AssignPins(PORT_B, adcs_data.flatsat_data3 << 12);
+    //HAL_GPIO_AssignPins(PORT_B, adcs_data.flatsat_data3 << 12);
     
     // Display the least significant byte of the checksum (aka last transmitted byte) using 8 LEDs
     // TODO: LEDS
@@ -35,6 +35,7 @@ void reinitializeCDH() {
     //initialize I2C
     //initialize GPIO
     //initialize timers
+    HAL_32kHz_Init();
 
     HAL_GPIO_Init(PORT_B, (1 << 12) | (1 << 13) | (1 << 14) |(1 << 15) |(1 << 16) |(1 << 17));
 

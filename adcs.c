@@ -2,6 +2,7 @@
 #include "adcs.h"
 
 #include "HAL.h"
+#include "I2C_handler.h"
 #include "util.h"
 
 
@@ -79,15 +80,15 @@ void ADCS_setMode(COMMAND_CODE mode){
 
 }
 
-char buffer[256];
-void ADCS_dataReceivedCallback(char data[], int dataSize) {
+uint8_t buffer[256];
+void ADCS_dataReceivedCallback(uint8_t data[], int dataSize) {
     for (int i = 0; i < dataSize; i++) {
         buffer[i] = data[i];
     }
 }
 
 void ADCS_init() {
-    HAL_I2C_registerDataRecievedCallback(adcs, ADCS_dataReceivedCallback);
+    HAL_I2C_registerDataReceivedCallback(adcs, ADCS_dataReceivedCallback);
 }
 
 void ADCS_setAttitude(uint16_t w, uint16_t x, uint16_t y, uint16_t z){
