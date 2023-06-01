@@ -19,21 +19,23 @@
 // } AdcsData;
 
 typedef struct {
-   uint8_t flatsat_data;
+   uint8_t flatsat_data1;
+   uint8_t flatsat_data2;
+   uint8_t flatsat_data3;
 } AdcsData;
 
-typedef enum { 
-   PING = 0x00,
-   GET_DATA_REGULAR = 0x01,
-   GET_DATA_DETAILED = 0x02,
-   CHARGE_MODE = 0x03,
-   DOWNLINK_MODE = 0x04,
-   RADIATION_SAFE_MODE = 0x05,
-   POWER_SAFE_MODE = 0x06,
-   END_OF_LIFE_MODE = 0x07,
-   STARTUP_MODE = 0x08,
-   DETUMBLE_MODE = 0x09,
-   SET_ATTITUDE = 0x0A
+typedef enum {
+   ADCS_PING = 0x00,
+   ADCS_GET_DATA_REGULAR = 0x01,
+   ADCS_GET_DATA_DETAILED = 0x02,
+   ADCS_CHARGE_MODE = 0x03,
+   ADCS_DOWNLINK_MODE = 0x04,
+   ADCS_RADIATION_SAFE_MODE = 0x05,
+   ADCS_POWER_SAFE_MODE = 0x06,
+   ADCS_END_OF_LIFE_MODE = 0x07,
+   ADCS_STARTUP_MODE = 0x08,
+   ADCS_DETUMBLE_MODE = 0x09,
+   ADCS_SET_ATTITUDE = 0x0A
 } COMMAND_CODE;
 
 /**

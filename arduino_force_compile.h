@@ -12,7 +12,7 @@
 #include "HAL_SAMV71Q21B.c"
 #include "HAL_simulation.c"
 #include "checksum.c"
-//#include "I2C_handle.c"
+#include "I2C_handler.c"
 #include "ADCS.c"
 #include "FlightStateMachine.c"
 #include "FSM_flatSat.c"
