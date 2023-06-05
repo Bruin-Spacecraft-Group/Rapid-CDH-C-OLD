@@ -13,7 +13,7 @@ char_ptr_with_size calculate_checksum(char[] y, int dataSize) {
     unsigned int x = 0;
     for (int i = 0; i<dataSize; i++)
     {
-        x = x + (y[i] << ((dataSize-i)*8));
+        x = x + (y[i] << ((dataSize-i-1)*8));
     }
     unsigned int result = 0;
     unsigned int current_index = 3; //start index at 3, count up but only use numbers with Hamming weight >=2
@@ -50,7 +50,7 @@ char_ptr_with_size calculate_checksum(char[] y, int dataSize) {
     final_res.data = (char*)malloc(final_res.size()*sizeof(char));
     for (int i = 0; i<final_res.size; i++)
     {
-        final_res.data[i] = result << ((final_res.size-i)*8);
+        final_res.data[i] = result << ((final_res.size-i-1)*8);
     }
     return final_res;   
 }
