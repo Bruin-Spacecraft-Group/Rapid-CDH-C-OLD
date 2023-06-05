@@ -5,7 +5,9 @@
 #include <math.h>
 #include <Wire.h>
 
-const MAX_DATA_RESPONSE_SIZE = 256;
+const int MAX_DATA_RESPONSE_SIZE = 256;
+void (*dataReceivedCallbacks[500])(uint8_t data[], int dataSize);
+int callbacksN = 0;
 
 // pretend this is Arduino/ATMEL code which receives the data
 void I2C_receivedData(int bytes)
@@ -50,9 +52,6 @@ void HAL_I2C_sendData(
     }
     Wire.endTransmission();    // stop transmitting
 }
-
-void (*dataReceivedCallbacks[500])(uint8_t data[], int dataSize);
-int callbacksN = 0;
 
 void HAL_I2C_registerDataReceivedCallback(
     enum HAL_Device device,  // device must send its address in I2C transmission
