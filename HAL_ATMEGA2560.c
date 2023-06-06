@@ -50,6 +50,17 @@ void HAL_I2C_sendData(
     for (int i = 0; i < dataSize; i++) {
         Wire.write(data[i]);              // sends x 
     }
+
+    // the following will be implemented in the ISR (interrupt service routine) in actual cubesat
+    uint8_t recievedData[3];
+    for (int i = 0; i < 3; i++){
+        recievedData[i] = Wire.read();
+    }
+
+    for (int i = 0; i < callbacksN; i++){ // for each subsystem's callback (not associating data for each subsystem yet)
+        dataReceivedCallbacks[i]((uint8_t*) recievedData, 3);
+    }
+
     Wire.endTransmission();    // stop transmitting
 }
 
@@ -58,6 +69,7 @@ void HAL_I2C_registerDataReceivedCallback(
     void (*dataReceived)(uint8_t data[], int dataSize) // data received callback
 ) {
     dataReceivedCallbacks[callbacksN++] = dataReceived;
+    // table of callback functions per subsystem, need to associate each callback with each subsystem
 }
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs

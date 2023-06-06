@@ -7,4 +7,6 @@ nbproject/**.properties
 defmplabxtrace.*
 nbproject/private
 **.DS_Store
+.vscode/settings.json
+.vscode/tasks.json
 

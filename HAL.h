@@ -33,6 +33,14 @@ extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 
 extern void* const PORT_A;
 extern void* const PORT_B;
+extern void* const PORT_C;
+extern void* const PORT_D;
+extern void* const PORT_E;
+extern void* const PORT_F;
+extern void* const PORT_G;
+extern void* const PORT_H;
+extern void* const PORT_J;
+extern void* const PORT_K;
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs
 void HAL_GPIO_Init(void* port, uint32_t pins);
