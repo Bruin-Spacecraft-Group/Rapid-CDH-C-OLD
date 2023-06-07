@@ -4,15 +4,23 @@
 #include <stdint.h>
 #include "HAL.h"
 
+enum HAL_Device {
+    adcs = 0x0c,
+    prop = 0x0d,
+    eps = 0x0b // as specified in EPS ICD
+};
+
+// CDH -> external device
 void HAL_I2C_sendData(
     enum HAL_Device device,  // device number
     uint8_t data[],        // array of data to be sent
     int dataSize        // the size of data[]
 );
 
-void HAL_I2C_registerDataRecievedCallback(
+// external device -> CDH
+void HAL_I2C_registerDataReceivedCallback(
     enum HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data recieved callback
+    void (*dataReceived)(uint8_t data[], int dataSize) // data recieved callback
 );
 
 // return status code:

@@ -5,6 +5,14 @@
 #ifndef HAL_H
 #define	HAL_H
 
+#ifndef __ARDUINO_MEGA_2560__ 
+#ifndef __SAMV71Q21B__
+#ifndef __SIMULATION__
+#error must define device to build to! (see config.h)
+#endif
+#endif
+#endif
+
 #ifndef NULL
 #define NULL ((void*)0)
 #endif
@@ -25,6 +33,14 @@ extern volatile int SIDE_EFFECT_FOR_DEBUGGING;
 
 extern void* const PORT_A;
 extern void* const PORT_B;
+extern void* const PORT_C;
+extern void* const PORT_D;
+extern void* const PORT_E;
+extern void* const PORT_F;
+extern void* const PORT_G;
+extern void* const PORT_H;
+extern void* const PORT_J;
+extern void* const PORT_K;
 
 // sets up the pins chosen by the bit mask from the selected port as general purpose outputs
 void HAL_GPIO_Init(void* port, uint32_t pins);
@@ -47,25 +63,6 @@ void HAL_Sleep(uint32_t millis);
 // overflows each 1.5 days: this function is appropriate only for measuring small
 // elapsed durations and requires 32kHz to be initialized
 uint32_t HAL_getTime();
-
-enum HAL_Device {
-    adcs = 0x0c,
-    prop = 0x0d,
-    eps = 0x0b // as specified in EPS ICD
-};
-
-// CDH -> external device
-void HAL_I2C_sendData( //should be moved to I2C_handler
-    enum HAL_Device device,  // device number
-    uint8_t data[],        // array of data to be sent
-    int dataSize        // the size of data[]
-);
-
-// external device -> CDH
-void HAL_I2C_registerDataRecievedCallback( //should be moved to I2C_handler
-    enum HAL_Device device,  // device must send its address in I2C transmission
-    void (*dataRecieved)(char data[], int dataSize) // data received callback
-);
 
 void HAL_I2C_beginTransmission(uint8_t addr);
 void HAL_I2C_signalTimeout();
